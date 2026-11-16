@@ -3,12 +3,13 @@
 :- module(theorems, [main/0]).
 :- use_module('../prolog/revdetlog').
 :- use_module(prove).
+:- discontiguous theorem/1.
 :- use_module(library(lists)).
 :- use_module(library(apply)).
 
 main :- prove_all(theorems).
 
-steps2(S) :- member(S, [add(0,1), add(1,0), sub(0,1), sub(1,0), xor(0,1), xor(1,0), swap(0,1), inc(0), inc(1), dec(0), dec(1), neg(0), neg(1)]).
+steps2(S) :- member(S, [add(0,1), add(1,0), sub(0,1), sub(1,0), cnot(0,1), cnot(1,0), swap(0,1), inc(0), inc(1), dec(0), dec(1), neg(0), neg(1)]).
 program(P) :- between(0, 2, L), length(P, L), maplist(steps2, P).
 regs(M, [A, B]) :- Top is M - 1, between(0, Top, A), between(0, Top, B).
 

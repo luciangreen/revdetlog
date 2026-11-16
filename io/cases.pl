@@ -6,7 +6,7 @@
 title('revdetlog').
 
 step_g(N, S) :- N1 is N - 1, rnd_int(0, N1, I), rnd_int(0, N1, J0), ( J0 =:= I -> J is (I + 1) mod N ; J = J0 ),
-    rnd_pick([add(I, J), sub(I, J), xor(I, J), swap(I, J), inc(I), dec(I), neg(I)], S).
+    rnd_pick([add(I, J), sub(I, J), cnot(I, J), swap(I, J), inc(I), dec(I), neg(I)], S).
 prog_g(N, P) :- rnd_int(0, 5, L), length(P, L), maplist(step_g(N), P).
 regs_g(N, M, R) :- length(R, N), Top is M - 1, maplist([X]>>rnd_int(0, Top, X), R).
 table_g(M, T) :- Top is M - 1, numlist(0, Top, Xs), maplist([X, X-F]>>rnd_int(0, Top, F), Xs, T).
