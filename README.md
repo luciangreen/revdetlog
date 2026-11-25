@@ -13,7 +13,7 @@
 ?- gate_count([add(0,1), add(1,0), swap(0,1)], C).               % C = [add-2, swap-1]
 ```
 
-Steps are `add(I,J)`, `sub(I,J)`, `xor(I,J)`, `swap(I,J)`, `inc(I)`, `dec(I)` and `neg(I)`, on registers that hold 0..M−1.
+Steps are `add(I,J)`, `sub(I,J)`, `cnot(I,J)` (register I := I xor J; M must be a power of 2), `swap(I,J)`, `inc(I)`, `dec(I)` and `neg(I)`, on registers that hold 0..M−1. `bennett/3` lists the embedding as a table of pairs, not yet as a circuit of these steps.
 
 ## Proofs
 
